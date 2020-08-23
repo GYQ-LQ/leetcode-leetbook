@@ -1,4 +1,4 @@
-# 初级算法 - 帮助入门
+# LeetCode 初级算法 练习  
 
 ### 1、数组 -- [(GitHub)](https://github.com/GYQ-LQ/quinn-leetcode/tree/master/01-algorithm-basic/1-Array)
 
