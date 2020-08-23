@@ -1,4 +1,4 @@
-# LeetCode 初级算法 练习  
+# LeetCode 初级算法 练习  [LeetCode 初级算法](https://leetcode-cn.com/leetbook/detail/top-interview-questions-easy/)
 
 ### 1、数组 -- [(GitHub)](https://github.com/GYQ-LQ/quinn-leetcode/tree/master/01-algorithm-basic/1-Array)
 
