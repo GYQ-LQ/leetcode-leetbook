@@ -1,3 +1,10 @@
+/*
+ * @Author: Quinn
+ * @Date: 2020-08-24 21:23:10
+ * @LastEditTime: 2021-04-07 12:34:37
+ * @LastEditors: quinn
+ * @Description:  
+ */
 /* 给定一个整数类型的数组 nums，请编写一个能够返回数组 “中心索引” 的方法。
 
 我们是这样定义数组 中心索引 的：数组中心索引的左侧所有元素相加的和等于右侧所有元素相加的和。
@@ -47,4 +54,16 @@ var pivotIndex = function (nums) {
   }
   return -1
 }
-console.log(pivotIndex([1, 1, 3, 3, 3, 2]))
+
+function pivotIndex1(arr) {
+  let total = arr.reduce((a, b) => a + b, 0);
+  let sum = 0
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i];
+    if (total - sum - item === sum)
+      return i;
+    sum += item
+  }
+  return -1
+}
+console.log(pivotIndex1([1, 1, 3, 3, 3, 2]))
