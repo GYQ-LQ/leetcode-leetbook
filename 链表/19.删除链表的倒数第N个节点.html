@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
+
+    // 示例：
+
+    // 给定一个链表: 1->2->3->4->5, 和 n = 2.
+
+    // 当删除了倒数第二个节点后，链表变为 1->2->3->5.
+    // 说明：
+
+    // 给定的 n 保证是有效的。 
+    class ListNode {
+        constructor(val) {
+            this.val = val;
+            this.next = null;
+        }
+    }
+
+    function CreateListHead(arr) {
+        let l = new ListNode(arr[0]);
+        for (let i = 1; i < arr.length; i++) {
+            let p = new ListNode(arr[i]);
+            p.next = l.next;
+            l.next = p;
+        }
+        return l;
+    }
+
+    function CreateListEnd(arr) {
+        let l = new ListNode(arr[0]);
+        let r = l;
+        for (let i = 1; i < arr.length; i++) {
+            let p = new ListNode(arr[i]);
+            r.next = p;
+            r = p;
+        }
+        return l;
+    }
+
+    function DispList(l) {
+        let p = l;
+        let s = '';
+        while (p != null) {
+            s += (p.val + ' ');
+            p = p.next;
+        }
+        console.log(s);
+    }
+
+    function ListLength(l) {
+        let p = l;
+        let n = 0;
+        while (p != null) {
+            n++;
+            p = p.next;
+        }
+        return n;
+    }
+
+    var removeNthFromEnd = function(head, n) {
+        // 将 cur 指向 head 的第 n + 1 个节点
+        let cur = head;
+        while (n--) {
+            cur = cur.next;
+        }
+
+        // 如果倒数第 n 个节点为 head
+        if (cur === null) {
+            head = head.next;
+            return head;
+        }
+
+        // beforeLastN 和 cur 同时向后移动
+        let beforeLastN = head;
+        while (cur.next !== null) {
+            cur = cur.next;
+            beforeLastN = beforeLastN.next;
+        }
+
+        // 删除倒数第 n 个节点
+        beforeLastN.next = beforeLastN.next.next;
+
+        return head;
+    };
+
+    var removeNthFromEnd1 = function(head, n) {
+        let newhead = new ListNode(null);
+        newhead.next = head;
+        let q = newhead,
+            p = newhead,
+            j = 0;
+        let len = 0;
+        while (q != null) {
+            len++;
+            q = q.next;
+        }
+        while (j < (len - n - 1) && p != null) {
+            j++;
+            p = p.next;
+        }
+        p.next = p.next.next;
+        return newhead.next;
+    };
+
+    var removeNthFromEnd2 = function(head, n) {
+        let cur1 = head,
+            cur2 = head;
+        let i = 0;
+        while (i < n) {
+            i++;
+            cur1 = cur1.next;
+            console.log(cur1)
+        }
+        if (!cur1)
+            return head.next;
+        while (cur1.next) {
+            cur1 = cur1.next;
+            cur2 = cur2.next;
+        }
+        cur2.next = cur2.next.next;
+        return head;
+    };
+
+    let l = CreateListEnd([1, 2]);
+    DispList(removeNthFromEnd2(l, 2))
+</script>
